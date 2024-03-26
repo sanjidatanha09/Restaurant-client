@@ -19,8 +19,15 @@ const Testimonials = () => {
             .then(data => setReviews(data))
     }, []);
 
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+    };
+
     return (
-        <section>
+        <section className='my-12'>
             <SectionTitle
 
                 subHeading={'What our client say'}
@@ -28,6 +35,32 @@ const Testimonials = () => {
 
             >
             </SectionTitle>
+
+            <Swiper
+                pagination={pagination}
+                modules={[Pagination]}
+                className="mySwiper"
+            >
+                <SwiperSlide>Slide 1</SwiperSlide>
+                
+                {
+                    reviews.map(review => <SwiperSlide
+                        key={review._id}
+                    >
+                        <div className='my-16 mx-24 flex  flex-col items-center'>
+                            <Rating
+                                style={{ maxWidth: 200 }}
+                                value={review.rating}
+                                readOnly
+                            />
+
+
+                            <p>{review.details}</p>
+                            <h3 className='text-2xl text-orange-400'>{review.name}</h3>
+                        </div>
+                    </SwiperSlide>)
+                }
+            </Swiper>
         </section>
     );
 };
