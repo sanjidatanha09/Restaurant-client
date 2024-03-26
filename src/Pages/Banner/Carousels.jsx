@@ -15,28 +15,28 @@ import img6 from '../../assets/Carousels-img/Carousel-6.jpg';
 const Carousels = () => {
     return (
         <div className=''>
-            <Carousel className=' h-[1000px]'>
-                <div className='h-[700px] '>
+            <Carousel className=' h-[800px]'>
+                <div className='h-[700px] border'>
                     <img className='h-full' src={img1} />
                     <p className="legend">Place 1</p>
                 </div>
-                <div className='h-[500px] '>
+                <div className='h-[700px] '>
                     <img className='h-full' src={img2} />
                     <p className="legend">Place 2</p>
                 </div>
-                <div className='h-[500px] '>
+                <div className='h-[700px] '>
                     <img className='h-full'  src={img3} />
                     <p className="legend">Place 3</p>
                 </div>
-                <div className='h-[500px] '>
+                <div className='h-[700px] '>
                     <img className='h-full' src={img4} />
                     <p className="legend">Place 4</p>
                 </div>
-                <div className='h-[500px] '>
+                <div className='h-[700px] '>
                     <img className='h-full' src={img5} />
                     <p className="legend">Place 5</p>
                 </div>
-                <div className='h-[500px] '>
+                <div className='h-[700px] '>
                     <img className='h-full' src={img6} />
                     <p className="legend">Place 6</p>
                 </div>
