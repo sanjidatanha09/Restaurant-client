@@ -25,7 +25,7 @@ const PopularMenu = () => {
 
     console.log(menu)
     return (
-        <section>
+        <section className='max-w-screen-lg mx-auto'>
             <SectionTitle
 
                 subHeading={'From 11.00am to 10.00pm'}
@@ -34,7 +34,7 @@ const PopularMenu = () => {
             >
             </SectionTitle>
 
-            <div>
+            <div className='grid grid-cols-2 gap-2 mt-5'>
                 {
                     menu.map(menuitems => <Menuitems 
                         key={menuitems._id}
