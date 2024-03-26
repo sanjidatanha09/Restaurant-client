@@ -3,7 +3,7 @@ import React from 'react';
 
 const SectionTitle = ({heading, subHeading}) => {
     return (
-        <div>
+        <div className='text-center font-bold  text-2xl'>
             <p>{subHeading}</p>
             <h3>{heading}</h3>
         </div>
