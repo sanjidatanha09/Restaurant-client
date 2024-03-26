@@ -1,27 +1,30 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import Menuitems from '../shared/Menuitems';
 
+import useMenu from '../../Hooks/useMenu';
+
 const PopularMenu = () => {
+    const [menu] = useMenu();
+    const popular = menu.filter(item => item.category === 'popular')
 
-    const [menu, setMenu] = useState([]);
+    // const [menu, setMenu] = useState([]);
 
-        //   normal useEffect
-            // useEffect( () =>{
-            //     fetch('menu.json')
-            //     .then(res => res.json())
-            //     .then(data =>setMenu(data))
-            // },[])
+    //     //   normal useEffect
+    //         // useEffect( () =>{
+    //         //     fetch('menu.json')
+    //         //     .then(res => res.json())
+    //         //     .then(data =>setMenu(data))
+    //         // },[])
 
 
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const pupularItems = data.filter(item => item.category === 'popular');
-                setMenu(pupularItems)})
-    }, [])
+    // useEffect(() => {
+    //     fetch('menu.json')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const pupularItems = data.filter(item => item.category === 'popular');
+    //             setMenu(pupularItems)})
+    // }, [])
 
     console.log(menu)
     return (
@@ -36,7 +39,7 @@ const PopularMenu = () => {
 
             <div className='grid grid-cols-2 gap-2 mt-5'>
                 {
-                    menu.map(menuitems => <Menuitems 
+                    popular.map(menuitems => <Menuitems 
                         key={menuitems._id}
                         menuitems={menuitems}
                     ></Menuitems>)
