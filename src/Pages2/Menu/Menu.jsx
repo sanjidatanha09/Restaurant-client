@@ -6,7 +6,7 @@ import menuImg from '../../assets/menu-img/image-5.jpg'
 import PopularMenu from '../../Pages/PopularMenu/PopularMenu';
 import useMenu from '../../Hooks/useMenu';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
-import MenuCategory from '../../Pages/Category/MenuCategory';
+import MenuCategory from './MenuCategory';
 
 const Menu = () => {
 
@@ -44,14 +44,20 @@ const Menu = () => {
 
 
             {/* soup menu items */}
-            <MenuCategory items={soup}></MenuCategory>
+            <MenuCategory items={soup}
+                title="Soup"
+                img={menuImg}></MenuCategory>
 
 
             {/* salad menu items */}
-            <MenuCategory items={salad}></MenuCategory>
+            <MenuCategory items={salad}
+                title="Salad"
+                img={menuImg}></MenuCategory>
 
             {/* pizza menu items */}
-            <MenuCategory items={pizza}></MenuCategory>
+            <MenuCategory items={pizza}
+                title="Pizza"
+                img={menuImg}></MenuCategory>
             
            
         </div>
