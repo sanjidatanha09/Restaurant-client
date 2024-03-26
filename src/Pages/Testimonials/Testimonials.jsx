@@ -8,6 +8,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
 
 
 const Testimonials = () => {
@@ -37,7 +40,7 @@ const Testimonials = () => {
             </SectionTitle>
 
             <Swiper
-                pagination={pagination}
+               
                 modules={[Pagination]}
                 className="mySwiper"
             >
