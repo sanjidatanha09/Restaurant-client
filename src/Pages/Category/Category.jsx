@@ -21,9 +21,12 @@ import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 const Category = () => {
     return (
         <section>
-            <SectionTitle>
-                subHeading = {'From 11.00am to 10.00pm'}
-                heading = {'Order online'}
+            <SectionTitle 
+            
+            subHeading={'From 11.00am to 10.00pm'}
+            heading={'Order online'}
+            
+            >
             </SectionTitle>
             <Swiper
             className='w-[1000px] h-[430px] '
