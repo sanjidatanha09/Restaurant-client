@@ -12,7 +12,7 @@ import OrderTab from './OrderTab';
 import Cover from '../../Pages2/Cover/Cover';
 
 const Order = () => {
-    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
+    const categories = ['dessert', 'soup','salad', 'pizza' , 'drinks']
 
     const { category } = useParams();
     console.log(category);
@@ -39,24 +39,24 @@ const Order = () => {
 
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>
+                    <Tab>Dessert</Tab>
+                    <Tab>Soup</Tab>
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
-                    <Tab>Soup</Tab>
-                    <Tab>Desserts</Tab>
                     <Tab>Drinks</Tab>
                    
                 </TabList>
                 <TabPanel>
-                    <OrderTab items={salad}></OrderTab>
-                </TabPanel>
-                <TabPanel>
-                    <OrderTab items={pizza}></OrderTab>
+                    <OrderTab items={dessert}></OrderTab>
                 </TabPanel>
                 <TabPanel>
                     <OrderTab items={soup}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={dessert}></OrderTab>
+                    <OrderTab items={salad}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                    <OrderTab items={pizza}></OrderTab>
 
                 </TabPanel>
                 <TabPanel>
