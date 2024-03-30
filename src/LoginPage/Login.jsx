@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const {signIn} = useContext(AuthContext)
 
     const captchaRef = useRef(null);
 
@@ -21,6 +25,12 @@ const Login = () => {
         const password = form.password.value;
         // const captcha= form.captcha.value;
         console.log(email, password)
+
+        signIn(email,password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        })
     }
 
     const handleValidateCaptcha = () =>{
@@ -45,6 +55,7 @@ const Login = () => {
                     <div className="card shrink-0 w-full max-w-sm 
                     shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
+                            <p>Login here</p>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -73,6 +84,9 @@ const Login = () => {
                                 <button disabled={disabled} type='submit' className="btn btn-primary">Login</button>
                             </div>
                         </form>
+                        <Link to='/registration'>Registration
+
+                        </Link>
                     </div>
                 </div>
             </div>

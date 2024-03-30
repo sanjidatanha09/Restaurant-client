@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from 'react';
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { app } from '../firebase/firebase.config';
 
 export const AuthContext = createContext(null)
@@ -12,8 +12,21 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
      
+    // for signup
     const createUser = (email,password) =>{
-        return
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+    // for signIn
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    // for logout
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth)
     }
 
     useEffect(() =>{
@@ -32,7 +45,9 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         user,
         loading,
-        createUser
+        createUser,
+        signIn,
+        logOut
 
     }
 

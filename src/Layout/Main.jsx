@@ -10,7 +10,9 @@ const Main = () => {
     const location = useLocation();
     console.log(location);
 
-    const noHeaderFooter = location.pathname.includes('login')
+    //this is remove  navbar and footer if page is login or register
+
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('registration');
 
     return (
         <div>
@@ -18,7 +20,7 @@ const Main = () => {
             {noHeaderFooter || <Navbar></Navbar>}
             
             <Outlet></Outlet>
-            
+
             {noHeaderFooter || <Footer></Footer>}
           
         </div>
