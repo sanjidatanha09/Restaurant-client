@@ -1,13 +1,38 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+
+    const captchaRef = useRef(null);
+
+    const [disabled,setDisabled] = useState(true);
+    // for reload captcha
+    useEffect(() => {
+        // how much character i need
+        loadCaptchaEnginge(4);
+    },[])
+   
+
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
+        // const captcha= form.captcha.value;
+        console.log(email, password)
+    }
+
+    const handleValidateCaptcha = () =>{
+        const captchaValue = captchaRef.current.value;
+        console.log(captchaValue);
+        if (validateCaptcha(captchaValue)) {
+           setDisabled(false);
+        }
+        //optional (dewa na dewa same)
+        // else {
+        //     setDisabled(true)
+        // }
     }
     return (
         <div>
@@ -17,7 +42,8 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card shrink-0 w-full max-w-sm 
+                    shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -34,13 +60,23 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+
+                            {/* for catpcha */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <LoadCanvasTemplate />
+                                </label>
+                                <input ref={captchaRef} type="text" name='captcha' placeholder="captcha" className="input input-bordered" required />
+                                <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs mt-2'>Validate</button>
+                            </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className="btn btn-primary">Login</button>
+                                <button disabled={disabled} type='submit' className="btn btn-primary">Login</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };
